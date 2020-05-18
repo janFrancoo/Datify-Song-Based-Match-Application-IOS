@@ -3,19 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52A8300EAF03624C02038F7A /* Pods_DatifySongBasedMatchApplicationIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC352F9CB444A3FE4BE1BE2 /* Pods_DatifySongBasedMatchApplicationIOS.framework */; };
+		F309B93524733B75006D1DFB /* PopUpResetPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309B93424733B75006D1DFB /* PopUpResetPassVC.swift */; };
 		F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DAC9F2471A6B20082BE4D /* AppDelegate.swift */; };
 		F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DACA12471A6B20082BE4D /* SceneDelegate.swift */; };
 		F31DACA42471A6B20082BE4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DACA32471A6B20082BE4D /* ViewController.swift */; };
 		F31DACA72471A6B20082BE4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31DACA52471A6B20082BE4D /* Main.storyboard */; };
 		F31DACA92471A6BB0082BE4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31DACA82471A6BB0082BE4D /* Assets.xcassets */; };
 		F31DACAC2471A6BB0082BE4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31DACAA2471A6BB0082BE4D /* LaunchScreen.storyboard */; };
+		F31DACB42471B6C40082BE4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */; };
+		F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37139E62471EFDF00CBF26B /* HomeViewController.swift */; };
+		F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5042472ED4800F8752B /* RegisterViewController.swift */; };
+		F3F5C5072472F3E600F8752B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5062472F3E600F8752B /* User.swift */; };
+		F3F5C5092472F56800F8752B /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5082472F56800F8752B /* Block.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E5E851A5E9DECDDB2CE8640 /* Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig"; path = "Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig"; sourceTree = "<group>"; };
+		DEC352F9CB444A3FE4BE1BE2 /* Pods_DatifySongBasedMatchApplicationIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatifySongBasedMatchApplicationIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8E481E89C20A6956C04868A /* Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig"; path = "Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F309B93424733B75006D1DFB /* PopUpResetPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpResetPassVC.swift; sourceTree = "<group>"; };
 		F31DAC9C2471A6B20082BE4D /* DatifySongBasedMatchApplicationIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatifySongBasedMatchApplicationIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31DAC9F2471A6B20082BE4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F31DACA12471A6B20082BE4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +35,11 @@
 		F31DACA82471A6BB0082BE4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F31DACAB2471A6BB0082BE4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31DACAD2471A6BB0082BE4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F37139E62471EFDF00CBF26B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3F5C5042472ED4800F8752B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F3F5C5062472F3E600F8752B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F3F5C5082472F56800F8752B /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A8300EAF03624C02038F7A /* Pods_DatifySongBasedMatchApplicationIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56EE80AD9242EB54B278ED88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEC352F9CB444A3FE4BE1BE2 /* Pods_DatifySongBasedMatchApplicationIOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAD415159AFB043300FB7BCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8E481E89C20A6956C04868A /* Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig */,
+				2E5E851A5E9DECDDB2CE8640 /* Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F31DAC932471A6B10082BE4D = {
 			isa = PBXGroup;
 			children = (
 				F31DAC9E2471A6B20082BE4D /* DatifySongBasedMatchApplicationIOS */,
 				F31DAC9D2471A6B20082BE4D /* Products */,
+				EAD415159AFB043300FB7BCC /* Pods */,
+				56EE80AD9242EB54B278ED88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,10 +95,16 @@
 				F31DAC9F2471A6B20082BE4D /* AppDelegate.swift */,
 				F31DACA12471A6B20082BE4D /* SceneDelegate.swift */,
 				F31DACA32471A6B20082BE4D /* ViewController.swift */,
+				F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */,
 				F31DACA52471A6B20082BE4D /* Main.storyboard */,
 				F31DACA82471A6BB0082BE4D /* Assets.xcassets */,
 				F31DACAA2471A6BB0082BE4D /* LaunchScreen.storyboard */,
 				F31DACAD2471A6BB0082BE4D /* Info.plist */,
+				F3F5C5082472F56800F8752B /* Block.swift */,
+				F37139E62471EFDF00CBF26B /* HomeViewController.swift */,
+				F3F5C5042472ED4800F8752B /* RegisterViewController.swift */,
+				F3F5C5062472F3E600F8752B /* User.swift */,
+				F309B93424733B75006D1DFB /* PopUpResetPassVC.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -74,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F31DACB02471A6BB0082BE4D /* Build configuration list for PBXNativeTarget "DatifySongBasedMatchApplicationIOS" */;
 			buildPhases = (
+				305D80774F2C87637C286DD4 /* [CP] Check Pods Manifest.lock */,
 				F31DAC982471A6B20082BE4D /* Sources */,
 				F31DAC992471A6B20082BE4D /* Frameworks */,
 				F31DAC9A2471A6B20082BE4D /* Resources */,
+				55F852986686770773F69EDF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F31DACAC2471A6BB0082BE4D /* LaunchScreen.storyboard in Resources */,
+				F31DACB42471B6C40082BE4D /* GoogleService-Info.plist in Resources */,
 				F31DACA92471A6BB0082BE4D /* Assets.xcassets in Resources */,
 				F31DACA72471A6B20082BE4D /* Main.storyboard in Resources */,
 			);
@@ -133,14 +178,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		305D80774F2C87637C286DD4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DatifySongBasedMatchApplicationIOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55F852986686770773F69EDF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F31DAC982471A6B20082BE4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F309B93524733B75006D1DFB /* PopUpResetPassVC.swift in Sources */,
 				F31DACA42471A6B20082BE4D /* ViewController.swift in Sources */,
+				F3F5C5092472F56800F8752B /* Block.swift in Sources */,
+				F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */,
+				F3F5C5072472F3E600F8752B /* User.swift in Sources */,
 				F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */,
 				F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */,
+				F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +374,7 @@
 		};
 		F31DACB12471A6BB0082BE4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8E481E89C20A6956C04868A /* Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +393,7 @@
 		};
 		F31DACB22471A6BB0082BE4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E5E851A5E9DECDDB2CE8640 /* Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
