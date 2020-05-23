@@ -1,0 +1,9 @@
+Podfile
+Podfile.lock
+Pods/*
+
+build/*
+
+DatifySongBasedMatchApplicationIOS.xcworkspace
+
+DatifySongBasedMatchApplicationIOS/GoogleService-Info.plist
