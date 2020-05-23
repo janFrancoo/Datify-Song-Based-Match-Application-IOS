@@ -96,15 +96,15 @@ class RegisterViewController: UIViewController {
                 self.makeAlert(title: "Error!", message: "User registration error")
                 Auth.auth().currentUser?.delete()
             } else {
-                self.performSegue(withIdentifier: "toHomeVC", sender: nil )
+                CurrentUser.shared.user = user!
+                self.performSegue(withIdentifier: "toSettingsVC", sender: nil )
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "toHomeVC") {
-            let destinationVC = segue.destination as! HomeViewController
-            destinationVC.eMail = (Auth.auth().currentUser?.email)!
+        if (segue.identifier == "toSettingsVC") {
+            _ = segue.destination as! SettingsViewController
         }
     }
     

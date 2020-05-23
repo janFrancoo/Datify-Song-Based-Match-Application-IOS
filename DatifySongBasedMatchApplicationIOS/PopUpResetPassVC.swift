@@ -22,7 +22,7 @@ class PopUpResetPassVC: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         sendBtn.isEnabled = false
-        inputMail.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: .editingChanged)
+        inputMail.addTarget(self, action: #selector(PopUpResetPassVC.textFieldDidChange(_:)), for: .editingChanged)
         sendBtn.addTarget(self, action: #selector(PopUpResetPassVC.sendPassResetMail(_:)), for: .touchUpInside)
     }
     

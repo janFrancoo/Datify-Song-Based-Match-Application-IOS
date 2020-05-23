@@ -1,0 +1,6 @@
+framework module Pods_DatifySongBasedMatchApplicationIOS {
+  umbrella header "Pods-DatifySongBasedMatchApplicationIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52A8300EAF03624C02038F7A /* Pods_DatifySongBasedMatchApplicationIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC352F9CB444A3FE4BE1BE2 /* Pods_DatifySongBasedMatchApplicationIOS.framework */; };
+		F303D20424795E96007FD949 /* BlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303D20324795E96007FD949 /* BlockedUsersViewController.swift */; };
 		F309B93524733B75006D1DFB /* PopUpResetPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309B93424733B75006D1DFB /* PopUpResetPassVC.swift */; };
 		F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DAC9F2471A6B20082BE4D /* AppDelegate.swift */; };
 		F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31DACA12471A6B20082BE4D /* SceneDelegate.swift */; };
@@ -16,7 +17,11 @@
 		F31DACA92471A6BB0082BE4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31DACA82471A6BB0082BE4D /* Assets.xcassets */; };
 		F31DACAC2471A6BB0082BE4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31DACAA2471A6BB0082BE4D /* LaunchScreen.storyboard */; };
 		F31DACB42471B6C40082BE4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */; };
+		F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */; };
+		F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2824788AB20095F532 /* CurrentUser.swift */; };
+		F3450A2B2478A1A60095F532 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2A2478A1A60095F532 /* Issue.swift */; };
 		F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37139E62471EFDF00CBF26B /* HomeViewController.swift */; };
+		F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D5BFA624745B390060B3FC /* SettingsViewController.swift */; };
 		F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5042472ED4800F8752B /* RegisterViewController.swift */; };
 		F3F5C5072472F3E600F8752B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5062472F3E600F8752B /* User.swift */; };
 		F3F5C5092472F56800F8752B /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5082472F56800F8752B /* Block.swift */; };
@@ -26,6 +31,7 @@
 		2E5E851A5E9DECDDB2CE8640 /* Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig"; path = "Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS.release.xcconfig"; sourceTree = "<group>"; };
 		DEC352F9CB444A3FE4BE1BE2 /* Pods_DatifySongBasedMatchApplicationIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatifySongBasedMatchApplicationIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E481E89C20A6956C04868A /* Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig"; path = "Target Support Files/Pods-DatifySongBasedMatchApplicationIOS/Pods-DatifySongBasedMatchApplicationIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F303D20324795E96007FD949 /* BlockedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersViewController.swift; sourceTree = "<group>"; };
 		F309B93424733B75006D1DFB /* PopUpResetPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpResetPassVC.swift; sourceTree = "<group>"; };
 		F31DAC9C2471A6B20082BE4D /* DatifySongBasedMatchApplicationIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatifySongBasedMatchApplicationIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31DAC9F2471A6B20082BE4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +42,11 @@
 		F31DACAB2471A6BB0082BE4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31DACAD2471A6BB0082BE4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpIssueSendViewController.swift; sourceTree = "<group>"; };
+		F3450A2824788AB20095F532 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		F3450A2A2478A1A60095F532 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		F37139E62471EFDF00CBF26B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3D5BFA624745B390060B3FC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F3F5C5042472ED4800F8752B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F3F5C5062472F3E600F8752B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F3F5C5082472F56800F8752B /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
@@ -105,6 +115,11 @@
 				F3F5C5042472ED4800F8752B /* RegisterViewController.swift */,
 				F3F5C5062472F3E600F8752B /* User.swift */,
 				F309B93424733B75006D1DFB /* PopUpResetPassVC.swift */,
+				F3D5BFA624745B390060B3FC /* SettingsViewController.swift */,
+				F3450A2824788AB20095F532 /* CurrentUser.swift */,
+				F3450A2A2478A1A60095F532 /* Issue.swift */,
+				F303D20324795E96007FD949 /* BlockedUsersViewController.swift */,
+				F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -225,14 +240,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */,
+				F3450A2B2478A1A60095F532 /* Issue.swift in Sources */,
 				F309B93524733B75006D1DFB /* PopUpResetPassVC.swift in Sources */,
 				F31DACA42471A6B20082BE4D /* ViewController.swift in Sources */,
+				F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */,
+				F303D20424795E96007FD949 /* BlockedUsersViewController.swift in Sources */,
 				F3F5C5092472F56800F8752B /* Block.swift in Sources */,
 				F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */,
 				F3F5C5072472F3E600F8752B /* User.swift in Sources */,
 				F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */,
 				F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */,
 				F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */,
+				F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

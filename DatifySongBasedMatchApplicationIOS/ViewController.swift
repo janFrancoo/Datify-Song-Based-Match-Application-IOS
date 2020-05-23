@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetPassBtn: UIButton!
     @IBOutlet weak var toggleSecureBtn: UIButton!
     
+    var db: Firestore!
     var show = false
     let EMAIL_REGEX = "^(.+)@([a-zA-Z\\d-]+)\\.([a-zA-Z]+)(\\.[a-zA-Z]+)?$"
     
@@ -25,6 +26,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        db = Firestore.firestore()
         
         loginBtn.isEnabled = false
         inputMail.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: .editingChanged)
@@ -37,7 +40,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if (user != nil) {
-                self.performSegue(withIdentifier: "toHomeVC", sender: nil)
+                self.updateCurrentUser(eMail: (Auth.auth().currentUser?.email)!)
             }
         })
     }
@@ -73,6 +76,19 @@ class ViewController: UIViewController {
                 self.loginBtn.isEnabled = true
                 self.registerBtn.isEnabled = true
             } else {
+                self.updateCurrentUser(eMail: self.inputMail.text!)
+            }
+        }
+    }
+    
+    func updateCurrentUser(eMail: String) {
+        self.db.collection("userDetail").document(eMail).getDocument { (document, err) in
+            if (err != nil) {
+                self.makeAlert(title: "Error!", message: "Login Error")
+            } else if let document = document, document.exists {
+                let data = document.data()
+                let user = User(JSON: data!)
+                CurrentUser.shared.user = user!
                 self.performSegue(withIdentifier: "toHomeVC", sender: nil)
             }
         }

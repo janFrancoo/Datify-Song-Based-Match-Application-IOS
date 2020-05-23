@@ -26,9 +26,8 @@ struct User: Mappable {
     var matches: [String]?
     var blockedMails: [Block]?
 
-    init?(map: Map) {
-
-    }
+    init () { }
+    init?(map: Map) { }
 
     mutating func mapping(map: Map) {
         eMail                   <- map["eMail"]
