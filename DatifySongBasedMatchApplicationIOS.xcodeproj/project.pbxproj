@@ -18,6 +18,7 @@
 		F31DACAC2471A6BB0082BE4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31DACAA2471A6BB0082BE4D /* LaunchScreen.storyboard */; };
 		F31DACB42471B6C40082BE4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */; };
 		F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */; };
+		F340F4402479D49700F78E84 /* BlockedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340F43F2479D49700F78E84 /* BlockedUserTableViewCell.swift */; };
 		F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2824788AB20095F532 /* CurrentUser.swift */; };
 		F3450A2B2478A1A60095F532 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2A2478A1A60095F532 /* Issue.swift */; };
 		F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37139E62471EFDF00CBF26B /* HomeViewController.swift */; };
@@ -25,6 +26,10 @@
 		F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5042472ED4800F8752B /* RegisterViewController.swift */; };
 		F3F5C5072472F3E600F8752B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5062472F3E600F8752B /* User.swift */; };
 		F3F5C5092472F56800F8752B /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5082472F56800F8752B /* Block.swift */; };
+		F3FF8388247ABBDC004DCB55 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF8387247ABBDC004DCB55 /* ChatViewController.swift */; };
+		F3FF838A247ABCFA004DCB55 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF8389247ABCFA004DCB55 /* ChatListTableViewCell.swift */; };
+		F3FF838C247AC8D9004DCB55 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF838B247AC8D9004DCB55 /* Chat.swift */; };
+		F3FF838E247AC9F3004DCB55 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF838D247AC9F3004DCB55 /* ChatMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,7 @@
 		F31DACAD2471A6BB0082BE4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpIssueSendViewController.swift; sourceTree = "<group>"; };
+		F340F43F2479D49700F78E84 /* BlockedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserTableViewCell.swift; sourceTree = "<group>"; };
 		F3450A2824788AB20095F532 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		F3450A2A2478A1A60095F532 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		F37139E62471EFDF00CBF26B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +56,10 @@
 		F3F5C5042472ED4800F8752B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F3F5C5062472F3E600F8752B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F3F5C5082472F56800F8752B /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		F3FF8387247ABBDC004DCB55 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F3FF8389247ABCFA004DCB55 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		F3FF838B247AC8D9004DCB55 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		F3FF838D247AC9F3004DCB55 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +130,11 @@
 				F3450A2A2478A1A60095F532 /* Issue.swift */,
 				F303D20324795E96007FD949 /* BlockedUsersViewController.swift */,
 				F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */,
+				F340F43F2479D49700F78E84 /* BlockedUserTableViewCell.swift */,
+				F3FF8387247ABBDC004DCB55 /* ChatViewController.swift */,
+				F3FF8389247ABCFA004DCB55 /* ChatListTableViewCell.swift */,
+				F3FF838B247AC8D9004DCB55 /* Chat.swift */,
+				F3FF838D247AC9F3004DCB55 /* ChatMessage.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -242,17 +257,22 @@
 			files = (
 				F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */,
 				F3450A2B2478A1A60095F532 /* Issue.swift in Sources */,
+				F3FF838C247AC8D9004DCB55 /* Chat.swift in Sources */,
 				F309B93524733B75006D1DFB /* PopUpResetPassVC.swift in Sources */,
 				F31DACA42471A6B20082BE4D /* ViewController.swift in Sources */,
 				F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */,
+				F3FF838A247ABCFA004DCB55 /* ChatListTableViewCell.swift in Sources */,
 				F303D20424795E96007FD949 /* BlockedUsersViewController.swift in Sources */,
 				F3F5C5092472F56800F8752B /* Block.swift in Sources */,
+				F3FF838E247AC9F3004DCB55 /* ChatMessage.swift in Sources */,
 				F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */,
 				F3F5C5072472F3E600F8752B /* User.swift in Sources */,
 				F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */,
 				F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */,
 				F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */,
 				F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */,
+				F3FF8388247ABBDC004DCB55 /* ChatViewController.swift in Sources */,
+				F340F4402479D49700F78E84 /* BlockedUserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

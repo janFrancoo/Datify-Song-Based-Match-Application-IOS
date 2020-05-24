@@ -7,3 +7,5 @@ build/*
 DatifySongBasedMatchApplicationIOS.xcworkspace
 
 DatifySongBasedMatchApplicationIOS/GoogleService-Info.plist
+
+.DS_Store
