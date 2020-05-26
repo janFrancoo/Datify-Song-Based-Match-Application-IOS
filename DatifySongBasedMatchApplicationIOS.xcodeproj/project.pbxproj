@@ -23,6 +23,7 @@
 		F3450A2B2478A1A60095F532 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2A2478A1A60095F532 /* Issue.swift */; };
 		F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37139E62471EFDF00CBF26B /* HomeViewController.swift */; };
 		F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D5BFA624745B390060B3FC /* SettingsViewController.swift */; };
+		F3EAD595247D4B940061ED77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAD594247D4B940061ED77 /* TabBarController.swift */; };
 		F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5042472ED4800F8752B /* RegisterViewController.swift */; };
 		F3F5C5072472F3E600F8752B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5062472F3E600F8752B /* User.swift */; };
 		F3F5C5092472F56800F8752B /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5082472F56800F8752B /* Block.swift */; };
@@ -53,6 +54,7 @@
 		F3450A2A2478A1A60095F532 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		F37139E62471EFDF00CBF26B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3D5BFA624745B390060B3FC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F3EAD594247D4B940061ED77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F3F5C5042472ED4800F8752B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F3F5C5062472F3E600F8752B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F3F5C5082472F56800F8752B /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				F3FF8389247ABCFA004DCB55 /* ChatListTableViewCell.swift */,
 				F3FF838B247AC8D9004DCB55 /* Chat.swift */,
 				F3FF838D247AC9F3004DCB55 /* ChatMessage.swift */,
+				F3EAD594247D4B940061ED77 /* TabBarController.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				F303D20424795E96007FD949 /* BlockedUsersViewController.swift in Sources */,
 				F3F5C5092472F56800F8752B /* Block.swift in Sources */,
 				F3FF838E247AC9F3004DCB55 /* ChatMessage.swift in Sources */,
+				F3EAD595247D4B940061ED77 /* TabBarController.swift in Sources */,
 				F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */,
 				F3F5C5072472F3E600F8752B /* User.swift in Sources */,
 				F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */,

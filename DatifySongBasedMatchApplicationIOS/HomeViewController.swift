@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var db = Firestore.firestore()
     
     @IBOutlet weak var tmpSignOut: UIButton!
-    @IBOutlet weak var tmpSettingsBtn: UIButton!
     @IBOutlet weak var chatListTable: UITableView!
     
     override func viewDidLoad() {
@@ -31,7 +30,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         tmpSignOut.addTarget(self, action: #selector(HomeViewController.signOut(_:)), for: .touchUpInside)
-        tmpSettingsBtn.addTarget(self, action: #selector(HomeViewController.goToSettings(_:)), for: .touchUpInside)
     }
 
     func generateChatName(_ matchMail: String) -> String {
@@ -76,10 +74,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func goToSettings(_ sender: AnyObject?) {
-        self.performSegue(withIdentifier: "toSettingsVC", sender: nil )
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chats.count
     }
@@ -112,6 +106,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         selectedChat = chats[indexPath.row].chatName!
         self.performSegue(withIdentifier: "toChatVC", sender: nil)
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toSettingsVC") {

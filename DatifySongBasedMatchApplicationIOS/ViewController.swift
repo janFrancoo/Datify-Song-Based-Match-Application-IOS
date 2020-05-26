@@ -89,7 +89,7 @@ class ViewController: UIViewController {
                 let data = document.data()
                 let user = User(JSON: data!)
                 CurrentUser.shared.user = user!
-                self.performSegue(withIdentifier: "toHomeVC", sender: nil)
+                self.performSegue(withIdentifier: "toTabBar", sender: nil)
             }
         }
     }
@@ -115,12 +115,14 @@ class ViewController: UIViewController {
         }
     }
     
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toHomeVC") {
             let destinationVC = segue.destination as! HomeViewController
             destinationVC.eMail = (Auth.auth().currentUser?.email)!
         }
     }
+    */
     
     func makeAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
