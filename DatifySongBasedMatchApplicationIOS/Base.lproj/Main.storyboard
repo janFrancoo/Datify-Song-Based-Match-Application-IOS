@@ -108,7 +108,7 @@
             <objects>
                 <viewController id="QLr-QJ-WeK" customClass="RegisterViewController" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LmP-Jo-Dh1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your e-mail address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dRk-bg-XEP">
@@ -157,7 +157,7 @@
             <objects>
                 <viewController id="xeE-rQ-mm2" customClass="SettingsViewController" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aaN-8H-cah">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AI9-Pg-T1w">
@@ -225,7 +225,7 @@
             <objects>
                 <viewController id="Fe2-6u-ZPx" customClass="BlockedUsersViewController" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XPc-7J-xAU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b70-FF-E5k">
@@ -305,7 +305,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rpN-qu-jfh">
@@ -374,50 +374,51 @@
             <objects>
                 <viewController id="dcX-ma-x1l" customClass="HomeViewController" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GlV-sr-yOq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wf4-Xe-udH">
-                                <rect key="frame" x="20" y="154" width="374" height="660"/>
+                                <rect key="frame" x="46" y="28" width="322" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="660" id="79g-9I-Khn"/>
-                                    <constraint firstAttribute="width" constant="374" id="odq-ZC-MwX"/>
-                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatListCell" rowHeight="150" id="ctU-6q-hvM" customClass="ChatListTableViewCell" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatListCell" rowHeight="110" id="ctU-6q-hvM" customClass="ChatListTableViewCell" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="322" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ctU-6q-hvM" id="u45-TK-GWb">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6m-YV-n3t">
-                                                    <rect key="frame" x="20" y="11" width="80" height="80"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6m-YV-n3t">
+                                                    <rect key="frame" x="16" y="11" width="80" height="80"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-Hw-z9E">
-                                                    <rect key="frame" x="108" y="23" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-Hw-z9E">
+                                                    <rect key="frame" x="104" y="23" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnR-En-xfX">
-                                                    <rect key="frame" x="108" y="65" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnR-En-xfX">
+                                                    <rect key="frame" x="104" y="65" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVX-gz-cC2">
-                                                    <rect key="frame" x="312" y="23" width="42" height="21"/>
+                                                    <rect key="frame" x="260" y="23" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6PW-Hw-z9E" firstAttribute="leading" secondItem="UnR-En-xfX" secondAttribute="leading" id="9dF-gi-Rql"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="M6m-YV-n3t" secondAttribute="bottom" constant="8" id="NZl-oQ-Xs4"/>
+                                                <constraint firstItem="6PW-Hw-z9E" firstAttribute="leading" secondItem="M6m-YV-n3t" secondAttribute="trailing" constant="8" id="TsR-ud-UwO"/>
+                                                <constraint firstItem="M6m-YV-n3t" firstAttribute="top" secondItem="u45-TK-GWb" secondAttribute="topMargin" id="ima-ak-8kT"/>
+                                                <constraint firstItem="UnR-En-xfX" firstAttribute="top" secondItem="6PW-Hw-z9E" secondAttribute="bottom" constant="21" id="lqy-GI-w0p"/>
+                                                <constraint firstItem="M6m-YV-n3t" firstAttribute="leading" secondItem="u45-TK-GWb" secondAttribute="leadingMargin" constant="-4" id="s8q-wF-DRD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImageView" destination="M6m-YV-n3t" id="12x-KG-O0E"/>
@@ -435,37 +436,31 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Wf4-Xe-udH" firstAttribute="leading" secondItem="GlV-sr-yOq" secondAttribute="leadingMargin" id="w0a-M8-ZVG"/>
-                            <constraint firstItem="7NT-g3-tnP" firstAttribute="bottom" secondItem="Wf4-Xe-udH" secondAttribute="bottom" constant="48" id="wmx-4y-Bud"/>
+                            <constraint firstItem="Wf4-Xe-udH" firstAttribute="leading" secondItem="7NT-g3-tnP" secondAttribute="leading" constant="46" id="HLp-Yr-6xG"/>
+                            <constraint firstItem="7NT-g3-tnP" firstAttribute="bottom" secondItem="Wf4-Xe-udH" secondAttribute="bottom" constant="62" id="JoV-fh-Xvh"/>
+                            <constraint firstItem="Wf4-Xe-udH" firstAttribute="top" secondItem="7NT-g3-tnP" secondAttribute="top" constant="28" id="QVy-5E-JOx"/>
+                            <constraint firstItem="Wf4-Xe-udH" firstAttribute="centerX" secondItem="GlV-sr-yOq" secondAttribute="centerX" id="dE1-ao-uV5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7NT-g3-tnP"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" image="bubble.left.fill" catalog="system" id="tBQ-fO-efA"/>
-                    <navigationItem key="navigationItem" id="Vvx-Ss-EJ2">
-                        <barButtonItem key="rightBarButtonItem" title="..." style="plain" id="IzT-Lj-4DN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9oL-Zj-Dki">
-                                <rect key="frame" x="348" y="7" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Vvx-Ss-EJ2"/>
                     <connections>
                         <outlet property="chatListTable" destination="Wf4-Xe-udH" id="Pju-YU-3gd"/>
-                        <outlet property="tmpSignOut" destination="9oL-Zj-Dki" id="Rr3-yB-O9s"/>
                         <segue destination="dM9-Jq-mUY" kind="show" identifier="toChatVC" id="gQW-i6-okG"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toLoginVC" id="ehh-Ls-sDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgh-VE-uL4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="848"/>
+            <point key="canvasLocation" x="1773.913043478261" y="847.76785714285711"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="vUu-LF-lCl">
             <objects>
                 <viewController id="dM9-Jq-mUY" customClass="ChatViewController" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rtU-T8-7OJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="2Vl-Jd-u68"/>
@@ -501,7 +496,7 @@
             <objects>
                 <viewController id="MMz-iz-jsk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j3Y-Bk-Wa8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="KCc-Po-hKK"/>
@@ -539,6 +534,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Wy9-ZQ-tTe"/>
+        <segue reference="ehh-Ls-sDa"/>
         <segue reference="O2k-jS-54R"/>
     </inferredMetricsTieBreakers>
 </document>

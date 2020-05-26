@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import ExpandingMenu
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,8 +19,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var chatNames = [String]()
     var chats = [Chat]()
     var db = Firestore.firestore()
+    var randTryLim = Constants.RAND_TRY_LIM
     
-    @IBOutlet weak var tmpSignOut: UIButton!
     @IBOutlet weak var chatListTable: UITableView!
     
     override func viewDidLoad() {
@@ -28,10 +29,160 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         generateChatNames()
         getData()
         
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        tmpSignOut.addTarget(self, action: #selector(HomeViewController.signOut(_:)), for: .touchUpInside)
-    }
+        let menuButtonSize: CGSize = CGSize(width: 64.0, height: 64.0)
+        let menuButton = ExpandingMenuButton(frame: CGRect(origin: CGPoint.zero,
+                                                           size: menuButtonSize),
+                                             image: UIImage(systemName: "plus.circle")!,
+                                             rotatedImage: UIImage(systemName: "plus.circle")!)
+        menuButton.center = CGPoint(x: self.view.bounds.width - 32.0, y: self.view.bounds.height - 72.0)
+        view.addSubview(menuButton)
 
+        let item1 = ExpandingMenuItem(size: menuButtonSize,
+                                      title: "Random Match!",
+                                      image: UIImage(systemName: "arrow.right.square.fill")!,
+                                      highlightedImage: UIImage(systemName: "arrow.right.square.fill")!,
+                                      backgroundImage: UIImage(systemName: "arrow.right.square.fill"),
+                                      backgroundHighlightedImage: UIImage(systemName: "arrow.right.square.fill"))
+        { () -> Void in
+            print("hmm")
+            self.randomMatch()
+        }
+        
+        let item2 = ExpandingMenuItem(size: menuButtonSize, title: "Sign out",
+                                      image: UIImage(systemName: "arrow.right.square.fill")!,
+                                      highlightedImage: UIImage(systemName: "arrow.right.square.fill")!,
+                                      backgroundImage: UIImage(systemName: "arrow.right.square.fill"),
+                                      backgroundHighlightedImage: UIImage(systemName: "arrow.right.square.fill"))
+        { () -> Void in
+            self.signOut(nil)
+        }
+                
+        menuButton.addMenuItems([item1, item2])
+    }
+    
+    func randomMatch() {
+        if randTryLim <= 0 {
+            makeAlert(title: "Limit Exceed", message: "Random trying limit exceeded")
+            return
+        }
+        
+        let randVal = Int.random(in: 0..<Constants.RAND_LIM)
+        let randDir = Int.random(in: 0..<1) == 0 ? Constants.RAND_DOWN : Constants.RAND_UP
+        
+        print(randVal, randDir)
+        
+        if randDir == Constants.RAND_UP {
+            db.collection("userDetail")
+                .whereField("random", isGreaterThan: randVal)
+                .order(by: "random").getDocuments { (querySnapshot, err) in
+                    if let err = err {
+                        self.makeAlert(title: "Error!", message: err.localizedDescription )
+                    } else {
+                        var randUser : User?
+                        var createChat = false
+                        for document in querySnapshot!.documents {
+                            let data = document.data()
+                            randUser = User(JSON: data)
+                            if (!(self.user.matches?.contains((randUser?.eMail)!))!) &&
+                                self.user.eMail != randUser?.eMail {
+                                createChat = true
+                                break
+                            }
+                        }
+                        if createChat {
+                            let chatName = self.generateChatName((randUser?.eMail!)!)
+                            self.createChat(chatName, randUser!)
+                        } else {
+                            self.randTryLim -= 1
+                            self.randomMatch()
+                        }
+                    }
+            }
+        }
+        else {
+            db.collection("userDetail")
+                .whereField("random", isLessThan: randVal)
+                .order(by: "random").getDocuments { (querySnapshot, err) in
+                    if let err = err {
+                        self.makeAlert(title: "Error!", message: err.localizedDescription )
+                    } else {
+                        var randUser : User?
+                        var createChat = false
+                        for document in querySnapshot!.documents {
+                            let data = document.data()
+                            randUser = User(JSON: data)
+                            if (!(self.user.matches?.contains((randUser?.eMail)!))!) &&
+                                self.user.eMail != randUser?.eMail {
+                                createChat = true
+                                break
+                            }
+                        }
+                        if createChat {
+                            let chatName = self.generateChatName((randUser?.eMail!)!)
+                            self.createChat(chatName, randUser!)
+                        } else {
+                            self.randTryLim -= 1
+                            self.randomMatch()
+                        }
+                    }
+            }
+        }
+    }
+    
+    func createChat(_ chatName: String, _ randUser: User) {
+        let chat : Chat
+        let createDate = Timestamp.init().seconds
+        if (user.eMail! < randUser.eMail!) {
+            chat = Chat(JSON: [
+                "chatName": chatName,
+                "username1": user.username!,
+                "username2": randUser.username!,
+                "avatar1": user.avatarUrl!,
+                "avatar2": randUser.avatarUrl!,
+                "lastMessage": "You are matched totally random!",
+                "basedOn": Constants.BASED_RANDOM,
+                "status": Constants.BASED_RANDOM,
+                "lastMessageDate": createDate,
+                "createDate": createDate,
+                "messages": [ChatMessage]()
+            ])!
+        }
+        else {
+            chat = Chat(JSON: [
+                "chatName": chatName,
+                "username1": user.username!,
+                "username2": randUser.username!,
+                "avatar1": user.avatarUrl!,
+                "avatar2": randUser.avatarUrl!,
+                "lastMessage": "You are matched totally random!",
+                "basedOn": Constants.BASED_RANDOM,
+                "status": Constants.BASED_RANDOM,
+                "lastMessageDate": createDate,
+                "createDate": createDate,
+                "messages": [ChatMessage]()
+            ])!
+        }
+
+        db.collection("chat").document(chatName).setData(chat.toJSON()) { err in
+            if let err = err {
+                self.makeAlert(title: "Error!", message: err.localizedDescription)
+            } else {
+                self.updateMatchFields(randUser.eMail!)
+                self.chats.append(chat)
+                self.chatListTable.reloadData()
+            }
+        }
+    }
+    
+    func updateMatchFields(_ matchMail: String) {
+        db.collection("userDetail").document(user.eMail!).updateData([
+            "matches": FieldValue.arrayUnion([matchMail])
+        ])
+        db.collection("userDetail").document(matchMail).updateData([
+            "matches": FieldValue.arrayUnion([self.user.eMail!])
+        ])
+    }
+    
     func generateChatName(_ matchMail: String) -> String {
         var chatName = ""
         if user.eMail! < matchMail {
@@ -71,7 +222,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func signOut(_ sender: AnyObject?) {
         try! Auth.auth().signOut()
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "toLoginVC", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,8 +257,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         selectedChat = chats[indexPath.row].chatName!
         self.performSegue(withIdentifier: "toChatVC", sender: nil)
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toSettingsVC") {
