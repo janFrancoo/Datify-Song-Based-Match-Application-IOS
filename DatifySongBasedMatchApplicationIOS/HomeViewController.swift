@@ -247,8 +247,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.usernameLabel.text = chat.username1
         }
         
+        let dateVar = Date.init(timeIntervalSince1970: TimeInterval(chat.lastMessageDate!))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+        dateFormatter.dateFormat = "h:mm a"
+        
         cell.lastMessageLabel.text = chat.lastMessage
-        cell.dateLabel.text = "createDate" // fix date later - lastMessageDate
+        cell.dateLabel.text = dateFormatter.string(from: dateVar)
 
         return cell
     }

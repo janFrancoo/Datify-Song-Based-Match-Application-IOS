@@ -12,7 +12,6 @@ import Kingfisher
 
 class BlockedUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var willAdd = [String]()
     var user = CurrentUser.shared.user
     var db = Firestore.firestore()
     var data = [Block]()
@@ -31,8 +30,7 @@ class BlockedUsersViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidDisappear(_ animated: Bool) {
         db.collection("userDetail").document(user.eMail!).updateData([
-            "blockedMails": user.blockedMails!,
-            "matches": FieldValue.arrayUnion(willAdd)
+            "blockedMails": user.blockedMails!
         ]) { err in
             if let err = err {
                 self.makeAlert(title: "Error", message: err.localizedDescription )
@@ -44,11 +42,30 @@ class BlockedUsersViewController: UIViewController, UITableViewDelegate, UITable
         let p = longPressGesture.location(in: blockedUsersTable)
         let indexPath = blockedUsersTable.indexPathForRow(at: p)
         if longPressGesture.state == UIGestureRecognizer.State.began {
-            willAdd.append(data[indexPath!.row].mail!)
-            data.remove(at: indexPath!.row)
-            blockedUsersTable.reloadData()
-            user.blockedMails = data
+            let chatName = generateChatName(data[indexPath!.row].mail!)
+            db.collection("chat").document(chatName).updateData([
+                "status": Constants.STATUS_CLOSED
+            ]) { err in
+                if let err = err {
+                    self.makeAlert(title: "Error", message: err.localizedDescription )
+                }
+                else {
+                    self.data.remove(at: indexPath!.row)
+                    self.blockedUsersTable.reloadData()
+                    self.user.blockedMails = self.data
+                }
+            }
         }
+    }
+    
+    func generateChatName(_ matchMail: String) -> String {
+        var chatName = ""
+        if user.eMail! < matchMail {
+            chatName = user.eMail! + "_" + matchMail
+        } else {
+            chatName = matchMail + "_" + user.eMail!
+        }
+        return chatName
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +80,15 @@ class BlockedUsersViewController: UIViewController, UITableViewDelegate, UITable
             cell.avatarImageView.kf.setImage(with: url)
         }
         
+        let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(data[indexPath.row].createDate!))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+        dateFormatter.dateFormat = "dd.MM"
+        
         cell.usernameLabel.text = data[indexPath.row].username
         cell.reasonLabel.text = data[indexPath.row].reason
-        cell.dateLabel.text = "createdate" // data[indexPath.row].createDate date transformations later
-        
+        cell.dateLabel.text = dateFormatter.string(from: dateVar)
+
         return cell
     }
     
