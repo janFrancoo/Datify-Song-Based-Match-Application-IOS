@@ -22,6 +22,9 @@
 		F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2824788AB20095F532 /* CurrentUser.swift */; };
 		F3450A2B2478A1A60095F532 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2A2478A1A60095F532 /* Issue.swift */; };
 		F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37139E62471EFDF00CBF26B /* HomeViewController.swift */; };
+		F3A9EDB12482AEFA001116DF /* ChatMessageRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB02482AEFA001116DF /* ChatMessageRightTableViewCell.swift */; };
+		F3A9EDB32482AF1D001116DF /* ChatMessageLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */; };
+		F3A9EDB52482B9F8001116DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */; };
 		F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D5BFA624745B390060B3FC /* SettingsViewController.swift */; };
 		F3E11FEA247DA03300A83FE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E11FE9247DA03300A83FE7 /* Constants.swift */; };
 		F3EAD595247D4B940061ED77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAD594247D4B940061ED77 /* TabBarController.swift */; };
@@ -54,6 +57,9 @@
 		F3450A2824788AB20095F532 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		F3450A2A2478A1A60095F532 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		F37139E62471EFDF00CBF26B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3A9EDB02482AEFA001116DF /* ChatMessageRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRightTableViewCell.swift; sourceTree = "<group>"; };
+		F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageLeftTableViewCell.swift; sourceTree = "<group>"; };
+		F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F3D5BFA624745B390060B3FC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F3E11FE9247DA03300A83FE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F3EAD594247D4B940061ED77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -141,6 +147,9 @@
 				F3FF838D247AC9F3004DCB55 /* ChatMessage.swift */,
 				F3EAD594247D4B940061ED77 /* TabBarController.swift */,
 				F3E11FE9247DA03300A83FE7 /* Constants.swift */,
+				F3A9EDB02482AEFA001116DF /* ChatMessageRightTableViewCell.swift */,
+				F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */,
+				F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -265,6 +274,7 @@
 				F3450A2B2478A1A60095F532 /* Issue.swift in Sources */,
 				F3FF838C247AC8D9004DCB55 /* Chat.swift in Sources */,
 				F309B93524733B75006D1DFB /* PopUpResetPassVC.swift in Sources */,
+				F3A9EDB12482AEFA001116DF /* ChatMessageRightTableViewCell.swift in Sources */,
 				F31DACA42471A6B20082BE4D /* ViewController.swift in Sources */,
 				F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */,
 				F3FF838A247ABCFA004DCB55 /* ChatListTableViewCell.swift in Sources */,
@@ -275,11 +285,13 @@
 				F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */,
 				F3F5C5072472F3E600F8752B /* User.swift in Sources */,
 				F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */,
+				F3A9EDB52482B9F8001116DF /* ProfileViewController.swift in Sources */,
 				F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */,
 				F3E11FEA247DA03300A83FE7 /* Constants.swift in Sources */,
 				F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */,
 				F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */,
 				F3FF8388247ABBDC004DCB55 /* ChatViewController.swift in Sources */,
+				F3A9EDB32482AF1D001116DF /* ChatMessageLeftTableViewCell.swift in Sources */,
 				F340F4402479D49700F78E84 /* BlockedUserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

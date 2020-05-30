@@ -7,15 +7,310 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    var chatName: String!
+    var matchUsername: String!
+    var matchMail: String!
+    var matchAvatarUrl: String!
+    var db: Firestore!
+    var messages: [ChatMessage]!
+    var user: User!
+    var listener: ListenerRegistration!
+    var imgSelected: Bool!
     
-    var chatName = ""
-
+    @IBOutlet weak var usernameBtn: UIButton!
+    @IBOutlet weak var userAvatar: UIImageView!
+    @IBOutlet weak var chatMessagesTable: UITableView!
+    @IBOutlet weak var messageInput: UITextField!
+    @IBOutlet weak var sendMessageBtn: UIButton!
+    @IBOutlet weak var sendFruitBtn: UIButton!
+    @IBOutlet weak var chooseImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(chatName)
+        imgSelected = false
+        user = CurrentUser.shared.user
+        db = Firestore.firestore()
+        messages = [ChatMessage]()
+        
+        sendMessageBtn.addTarget(self, action: #selector(ChatViewController.sendMessage(_:)), for: .touchUpInside)
+        sendFruitBtn.addTarget(self, action: #selector(ChatViewController.sendFruit(_:)), for: .touchUpInside)
+        usernameBtn.addTarget(self, action: #selector(ChatViewController.goToUserProfile(_:)), for: .touchUpInside)
+        messageInput.addTarget(self, action: #selector(ChatViewController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        chooseImageView.isUserInteractionEnabled = true
+        let gestRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosePic))
+        chooseImageView.addGestureRecognizer(gestRecognizer)
+        
+        localDbSetup()
+        getFromLocalDb()
+        listenCloud()
+        updateHeader()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if listener != nil {
+            listener.remove()
+        }
+        
+        removeRedundantMessagesFromCloud()
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if let message = messageInput.text {
+            if message.count > 0 {
+                sendMessageBtn.isEnabled = true
+            } else {
+                sendMessageBtn.isEnabled = false
+            }
+        } else {
+            sendMessageBtn.isEnabled = false
+        }
+    }
+    
+    func localDbSetup() {
+        
+    }
+    
+    func getFromLocalDb() {
+        
+    }
+    
+    func listenCloud() {
+        listener = db.collection("chat").document(chatName).collection("message")
+            .addSnapshotListener { querySnapshot, error in
+                if let err = error {
+                    self.makeAlert(title: "Error!", message: err.localizedDescription)
+                } else if let documents = querySnapshot?.documents {
+                    for document in documents {
+                        let chatMessage = ChatMessage(JSON: document.data())
+                        self.messages.append(chatMessage!)
+                        self.chatMessagesTable.reloadData()
+                        if chatMessage?.sender != self.user.username {
+                            self.db.collection("chat").document(self.chatName)
+                                .collection("message").document(document.documentID).updateData([
+                                    "read": true
+                                ])
+                        }
+                        // write to local
+                    }
+                }
+            }
+    }
+    
+    func writeToLocalDb() {
+        
+    }
+    
+    func updateLastMessage(_ lastMessage: String, _ lastMessageDate: Int64) {
+        db.collection("chat").document(chatName).updateData([
+            "lastMessage": lastMessage,
+            "lastMessageDate": lastMessageDate
+        ])
+    }
+    
+    func removeRedundantMessagesFromCloud() {
+        db.collection("chat").document(chatName).collection("message")
+            .whereField("sender", isEqualTo: user.username!)
+            .whereField("read", isEqualTo: true)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    self.makeAlert(title: "Error!", message: err.localizedDescription)
+                } else {
+                    for document in querySnapshot!.documents {
+                      document.reference.delete()
+                    }
+                }
+            }
+    }
+    
+    func updateHeader() {
+        let url = URL(string: matchAvatarUrl)
+        userAvatar.kf.setImage(with: url)
+        usernameBtn.setTitle(matchUsername, for: .normal)
+    }
+    
+    @objc func sendMessage(_ sender: AnyObject?) {
+        let message = messageInput.text!
+        let createDate = Timestamp.init().seconds
+        
+        if imgSelected == true {
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let mediaFolder = storageRef.child("chatImages")
+            
+            var chatMessageWithoutImg = ChatMessage(JSON: [
+                "sender": self.user.username!,
+                "message": message,
+                "imgUrl": "",
+                "transmitted": false,
+                "read": false,
+                "fruitId": 0,
+                "sendDate": createDate
+            ])!
+            
+            messages.append(chatMessageWithoutImg)
+            chatMessagesTable.reloadData()
+  
+            if let data = chooseImageView.image?.jpegData(compressionQuality: 0.5) {
+                let uuid = UUID().uuidString
+                let imageRef = mediaFolder.child("\(uuid).jpg")
+                imageRef.putData(data, metadata: nil) { (metadata, error) in
+                    if let err = error {
+                        self.makeAlert(title: "Error", message: err.localizedDescription)
+                    } else {
+                        imageRef.downloadURL { (url, error) in
+                            if let err = error {
+                                self.makeAlert(title: "Error", message: err.localizedDescription)
+                            } else {
+                                self.imgSelected = false
+                                let imageURL = url?.absoluteString
+                                chatMessageWithoutImg.imgUrl = imageURL
+                                chatMessageWithoutImg.transmitted = true
+                                self.db.collection("chat").document(self.chatName).collection("message").addDocument(data: chatMessageWithoutImg.toJSON()) { err in
+                                    if let err = err {
+                                        self.makeAlert(title: "Error!", message: err.localizedDescription)
+                                    } else {
+                                        self.updateLastMessage(chatMessageWithoutImg.message!, chatMessageWithoutImg.sendDate!)
+                                        for i in stride(from: self.messages.count, through: 0, by: -1) {
+                                            if self.messages[i].sendDate == chatMessageWithoutImg.sendDate
+                                            && self.messages[i].sender == chatMessageWithoutImg.sender {
+                                                self.messages[i].imgUrl = imageURL
+                                                self.messages[i].transmitted = true
+                                                break
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            let chatMessageNotTransmitted = ChatMessage(JSON: [
+                "sender": user.username!,
+                "message": message,
+                "imgUrl": "",
+                "transmitted": false,
+                "read": false,
+                "fruitId": 0,
+                "sendDate": createDate
+            ])!
+            
+            messages.append(chatMessageNotTransmitted)
+            chatMessagesTable.reloadData()
+            
+            var chatMessageTransmitted = chatMessageNotTransmitted
+            chatMessageTransmitted.transmitted = true
+            
+            db.collection("chat").document(chatName).collection("message").addDocument(data: chatMessageTransmitted.toJSON()) { err in
+                if let err = err {
+                    self.makeAlert(title: "Error!", message: err.localizedDescription)
+                } else {
+                    self.updateLastMessage(chatMessageTransmitted.message!, chatMessageTransmitted.sendDate!)
+                    for i in stride(from: self.messages.count, through: 0, by: -1) {
+                        if self.messages[i].sendDate == chatMessageTransmitted.sendDate
+                        && self.messages[i].sender == chatMessageTransmitted.sender {
+                            self.messages[i].transmitted = true
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func sendFruit(_ sender: AnyObject?) {
+        // updateLastMessage
+    }
+    
+    @objc func choosePic(_ sender: AnyObject?) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        chooseImageView.image = info[.originalImage] as? UIImage
+        imgSelected = true
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    // sync listening
+    
+    @objc func goToUserProfile(_ sender: AnyObject?) {
+        self.performSegue(withIdentifier: "toProfileVC", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+        let leftCell = tableView.dequeueReusableCell(withIdentifier: "messageCellLeft") as! ChatMessageLeftTableViewCell
+        let rightCell = tableView.dequeueReusableCell(withIdentifier: "messageCellRight") as! ChatMessageRightTableViewCell
+        
+        let url = URL(string: message.imgUrl!)
+        let dateVar = Date.init(timeIntervalSince1970: TimeInterval(message.sendDate!))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+        dateFormatter.dateFormat = "h:mm a"
+                
+        if message.sender == user.username {
+            rightCell.messageLabel.text = message.message
+            rightCell.dateLabel.text = dateFormatter.string(from: dateVar)
+            if message.imgUrl != "" {
+                rightCell.sentImage.kf.setImage(with: url)
+            } else if message.fruitId != 0 {
+                switch message.fruitId {
+                case Constants.FRUIT_LEMON:
+                    print("lemon") // change later
+                case Constants.FRUIT_WATERMELON:
+                    print("waterlemon") // change later
+                default:
+                    print("default") // change later
+                }
+            }
+            if message.transmitted == true {
+                //
+            }
+            if message.read == true {
+                //
+            }
+            return rightCell
+        } else {
+            leftCell.messageLabel.text = message.message
+            leftCell.dateLabel.text = dateFormatter.string(from: dateVar)
+            if message.imgUrl != "" {
+                leftCell.sentImage.kf.setImage(with: url)
+            }
+            return leftCell
+        }
+    }
+    
+    func makeAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okBtn = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+        alert.addAction(okBtn)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfileVC" {
+            let destinationVC = segue.destination as! ProfileViewController
+            destinationVC.mail = matchMail
+            destinationVC.avatarUrl = matchAvatarUrl
+            destinationVC.chatName = chatName
+            destinationVC.username = matchUsername
+        }
     }
 
 }

@@ -14,7 +14,7 @@ import ExpandingMenu
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var eMail = ""
-    var selectedChat = ""
+    var selectedChat: Chat!
     var user = CurrentUser.shared.user
     var chatNames = [String]()
     var chats = [Chat]()
@@ -259,8 +259,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedChat = chats[indexPath.row].chatName!
+        selectedChat = chats[indexPath.row]
         self.performSegue(withIdentifier: "toChatVC", sender: nil)
+    }
+    
+    func extractMailFromChatName(_ chatName: String, _ lookFor: Int) -> String {
+        let chatNameLen = chatName.count
+        let currUserMailLen = user.eMail!.count
+        let matchMailLen = chatNameLen - currUserMailLen - 1
+        let matchMail: String!
+        
+        if lookFor == 2 {
+            let start = chatName.index(chatName.startIndex, offsetBy: currUserMailLen + 1)
+            let end = chatName.index(chatName.endIndex, offsetBy: -matchMailLen)
+            let range = start..<end
+            
+            matchMail = String(chatName[range])
+        } else {
+            let start = chatName.startIndex
+            let end = chatName.index(chatName.startIndex, offsetBy: matchMailLen - 1)
+            let range = start..<end
+
+            matchMail = String(chatName[range])
+        }
+        
+        return matchMail
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -269,7 +292,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             destinationVC.backNav = true
         } else if (segue.identifier == "toChatVC") {
             let destinationVC = segue.destination as! ChatViewController
-            destinationVC.chatName = selectedChat
+            destinationVC.chatName = selectedChat.chatName
+            if selectedChat.username1 == user.username {
+                destinationVC.matchUsername = selectedChat.username2
+                destinationVC.matchMail = extractMailFromChatName(selectedChat.chatName!, 2)
+                destinationVC.matchAvatarUrl = selectedChat.avatar2
+            } else {
+                destinationVC.matchUsername = selectedChat.username1
+                destinationVC.matchMail = extractMailFromChatName(selectedChat.chatName!, 1)
+                destinationVC.matchAvatarUrl = selectedChat.avatar1
+            }
         }
     }
     
