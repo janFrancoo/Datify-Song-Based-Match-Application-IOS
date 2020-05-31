@@ -43,6 +43,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         usernameBtn.addTarget(self, action: #selector(ChatViewController.goToUserProfile(_:)), for: .touchUpInside)
         messageInput.addTarget(self, action: #selector(ChatViewController.textFieldDidChange(_:)), for: .editingChanged)
         
+        sendMessageBtn.isEnabled = false
         chooseImageView.isUserInteractionEnabled = true
         let gestRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosePic))
         chooseImageView.addGestureRecognizer(gestRecognizer)
@@ -63,7 +64,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if let message = messageInput.text {
-            if message.count > 0 {
+            if message != "" || imgSelected == true {
                 sendMessageBtn.isEnabled = true
             } else {
                 sendMessageBtn.isEnabled = false
@@ -84,16 +85,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func listenCloud() {
         listener = db.collection("chat").document(chatName).collection("message")
             .addSnapshotListener { querySnapshot, error in
-                if let err = error {
-                    self.makeAlert(title: "Error!", message: err.localizedDescription)
-                } else if let documents = querySnapshot?.documents {
-                    for document in documents {
-                        let chatMessage = ChatMessage(JSON: document.data())
-                        self.messages.append(chatMessage!)
+            guard let snapshot = querySnapshot else {
+                self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Listen error")
+                return
+            }
+            snapshot.documentChanges.forEach { diff in
+                if diff.type == .added {
+                    let chatMessage = ChatMessage(JSON: diff.document.data())!
+                    if !self.messages.contains(chatMessage) {
+                        self.messages.append(chatMessage)
                         self.chatMessagesTable.reloadData()
-                        if chatMessage?.sender != self.user.username {
+                        if chatMessage.sender != self.user.username {
                             self.db.collection("chat").document(self.chatName)
-                                .collection("message").document(document.documentID).updateData([
+                                .collection("message").document(diff.document.documentID).updateData([
                                     "read": true
                                 ])
                         }
@@ -101,6 +105,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             }
+        }
     }
     
     func writeToLocalDb() {
@@ -137,6 +142,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func sendMessage(_ sender: AnyObject?) {
         let message = messageInput.text!
+        messageInput.text = ""
         let createDate = Timestamp.init().seconds
         
         if imgSelected == true {
@@ -177,7 +183,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                                         self.makeAlert(title: "Error!", message: err.localizedDescription)
                                     } else {
                                         self.updateLastMessage(chatMessageWithoutImg.message!, chatMessageWithoutImg.sendDate!)
-                                        for i in stride(from: self.messages.count, through: 0, by: -1) {
+                                        for i in stride(from: self.messages.count - 1, through: 0, by: -1) {
                                             if self.messages[i].sendDate == chatMessageWithoutImg.sendDate
                                             && self.messages[i].sender == chatMessageWithoutImg.sender {
                                                 self.messages[i].imgUrl = imageURL
@@ -214,7 +220,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.makeAlert(title: "Error!", message: err.localizedDescription)
                 } else {
                     self.updateLastMessage(chatMessageTransmitted.message!, chatMessageTransmitted.sendDate!)
-                    for i in stride(from: self.messages.count, through: 0, by: -1) {
+                    for i in stride(from: self.messages.count - 1, through: 0, by: -1) {
                         if self.messages[i].sendDate == chatMessageTransmitted.sendDate
                         && self.messages[i].sender == chatMessageTransmitted.sender {
                             self.messages[i].transmitted = true
@@ -258,7 +264,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let leftCell = tableView.dequeueReusableCell(withIdentifier: "messageCellLeft") as! ChatMessageLeftTableViewCell
         let rightCell = tableView.dequeueReusableCell(withIdentifier: "messageCellRight") as! ChatMessageRightTableViewCell
         
-        let url = URL(string: message.imgUrl!)
         let dateVar = Date.init(timeIntervalSince1970: TimeInterval(message.sendDate!))
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.local
@@ -268,7 +273,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             rightCell.messageLabel.text = message.message
             rightCell.dateLabel.text = dateFormatter.string(from: dateVar)
             if message.imgUrl != "" {
-                rightCell.sentImage.kf.setImage(with: url)
+                rightCell.sentImage.kf.setImage(with: URL(string: message.imgUrl!))
             } else if message.fruitId != 0 {
                 switch message.fruitId {
                 case Constants.FRUIT_LEMON:
@@ -290,7 +295,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             leftCell.messageLabel.text = message.message
             leftCell.dateLabel.text = dateFormatter.string(from: dateVar)
             if message.imgUrl != "" {
-                leftCell.sentImage.kf.setImage(with: url)
+                leftCell.sentImage.kf.setImage(with: URL(string: message.imgUrl!))
             }
             return leftCell
         }

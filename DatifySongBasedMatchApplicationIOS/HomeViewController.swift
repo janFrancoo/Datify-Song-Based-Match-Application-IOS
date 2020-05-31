@@ -68,9 +68,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let randVal = Int.random(in: 0..<Constants.RAND_LIM)
         let randDir = Int.random(in: 0..<1) == 0 ? Constants.RAND_DOWN : Constants.RAND_UP
-        
-        print(randVal, randDir)
-        
+                
         if randDir == Constants.RAND_UP {
             db.collection("userDetail")
                 .whereField("random", isGreaterThan: randVal)
@@ -205,16 +203,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
         
-        db.collection("chat").whereField(FieldPath.documentID(), in: chatNames).addSnapshotListener(includeMetadataChanges: true) { (snapshot, err) in
+        // FIXME: Put in order by lastMessageDate
+        db.collection("chat").whereField(FieldPath.documentID(), in: chatNames)
+            .addSnapshotListener(includeMetadataChanges: true) { (snapshot, err) in
             if err != nil {
                 self.makeAlert(title: "Error", message: err?.localizedDescription ?? "Chat list error")
             } else {
                 for doc in snapshot!.documents {
-                    let chat = Chat(JSON: doc.data())
-                    if !self.chats.contains(chat!) {
-                        self.chats.append(chat!)
-                        self.chatListTable.reloadData()
+                    let chat = Chat(JSON: doc.data())!
+                    if let chatOffset = self.chats.firstIndex(where: {$0.chatName == chat.chatName}) {
+                        self.chats[chatOffset] = chat
+                    } else {
+                        self.chats.append(chat)
                     }
+                    self.chatListTable.reloadData()
+                    // TODO: Notificaitons!
                 }
             }
         }

@@ -9,15 +9,8 @@
 import Foundation
 import ObjectMapper
 
-public struct ChatMessage: Mappable {
-    
-    /*
-    private String sender, message, imgUrl;
-    private boolean transmitted, read;
-    private long sendDate;
-    private int fruitId = 0;
-    */
-    
+public struct ChatMessage: Mappable, Equatable {
+        
     var sender: String?
     var message: String?
     var imgUrl: String?
@@ -31,13 +24,19 @@ public struct ChatMessage: Mappable {
     }
 
     public mutating func mapping(map: Map) {
-        sender          <- map["mail"]
-        message         <- map["username"]
-        imgUrl          <- map["avatarUrl"]
-        transmitted     <- map["reason"]
-        read            <- map["createDate"]
+        sender          <- map["sender"]
+        message         <- map["message"]
+        imgUrl          <- map["imgUrl"]
+        transmitted     <- map["transmitted"]
+        read            <- map["read"]
         fruitId         <- map["fruitId"]
         sendDate        <- map["sendDate"]
     }
     
+}
+
+extension ChatMessage {
+    public static func == (c1: ChatMessage, c2: ChatMessage) -> Bool {
+        return c1.sendDate == c2.sendDate
+    }
 }
