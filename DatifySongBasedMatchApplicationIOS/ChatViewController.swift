@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SQLite3
 import Firebase
 import Kingfisher
 
@@ -21,6 +22,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var user: User!
     var listener: ListenerRegistration!
     var imgSelected: Bool!
+    var localDb: OpaquePointer?
     
     @IBOutlet weak var usernameBtn: UIButton!
     @IBOutlet weak var userAvatar: UIImageView!
@@ -75,11 +77,53 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func localDbSetup() {
-        
+        let fileURL = try! FileManager.default.url(for: .documentDirectory,
+                                                   in: .userDomainMask,
+                                                   appropriateFor: nil,
+                                                   create: false).appendingPathComponent(Constants.DB_NAME)
+        if sqlite3_open(fileURL.path, &localDb) != SQLITE_OK {
+            makeAlert(title: "Error!", message: "Local db conn error")
+        } else {
+            let query = """
+                        CREATE TABLE IF NOT EXISTS \(Constants.TABLE_MESSAGES) (chatName VARCHAR,
+                        sender VARCHAR, message VARCHAR, sendDate LONG, read INT, imgUrl VARCHAR, fruitId INT,
+                        PRIMARY KEY (message, sendDate))
+                        """
+            var createTableStatement: OpaquePointer? = nil
+            if sqlite3_prepare_v2(localDb, query, -1, &createTableStatement, nil) == SQLITE_OK {
+                if sqlite3_step(createTableStatement) != SQLITE_DONE {
+                    makeAlert(title: "Error!", message: "Create table error")
+                }
+            } else {
+                makeAlert(title: "Error!", message: "Create table statement error")
+            }
+            sqlite3_finalize(createTableStatement)
+        }
     }
     
     func getFromLocalDb() {
-        
+        // FIXME: Order by date
+        let query = "SELECT * FROM \(Constants.TABLE_MESSAGES)"
+        var queryStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(localDb, query, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let chatNameFromLocal = String(describing: String(cString: sqlite3_column_text(queryStatement, 0)))
+                if chatNameFromLocal == chatName {
+                    let chatMessage = ChatMessage(JSON: [
+                        "sender": String(describing: String(cString: sqlite3_column_text(queryStatement, 1))),
+                        "message": String(describing: String(cString: sqlite3_column_text(queryStatement, 2))),
+                        "imgUrl": String(describing: String(cString: sqlite3_column_text(queryStatement, 5))),
+                        "transmitted": true,
+                        "read": sqlite3_column_int(queryStatement, 4) == 1 ? true : false,
+                        "fruitId": sqlite3_column_int(queryStatement, 6),
+                        "sendDate": sqlite3_column_int(queryStatement, 3)
+                    ])!
+                    messages.append(chatMessage)
+                }
+            }
+            chatMessagesTable.reloadData()
+        }
+        sqlite3_finalize(queryStatement)
     }
     
     func listenCloud() {
@@ -101,15 +145,35 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     "read": true
                                 ])
                         }
-                        // write to local
+                        self.writeToLocalDb(chatMessage)
                     }
                 }
+                // FIXME: add type .changed for read -> true
             }
         }
     }
     
-    func writeToLocalDb() {
-        
+    func writeToLocalDb(_ chatMessage: ChatMessage) {
+        let insertStatementString = """
+                                    REPLACE INTO \(Constants.TABLE_MESSAGES)
+                                    (chatName, sender, message, sendDate, read, imgUrl, fruitId) VALUES
+                                    (?, ?, ?, ?, \(chatMessage.read! ? 1 : 0), ?, \(chatMessage.fruitId!))
+                                    """
+        var insertStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(localDb, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            sqlite3_bind_text(insertStatement, 1, (chatName as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (chatMessage.sender! as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (chatMessage.message! as NSString).utf8String, -1, nil)
+            sqlite3_bind_int(insertStatement, 4, Int32(chatMessage.sendDate!))
+            sqlite3_bind_text(insertStatement, 5, (chatMessage.imgUrl! as NSString).utf8String, -1, nil)
+            
+            if sqlite3_step(insertStatement) != SQLITE_DONE {
+                makeAlert(title: "Error!", message: "Write to local error")
+            }
+        } else {
+            makeAlert(title: "Error!", message: "Replace into statement error")
+        }
+        sqlite3_finalize(insertStatement)
     }
     
     func updateLastMessage(_ lastMessage: String, _ lastMessageDate: Int64) {

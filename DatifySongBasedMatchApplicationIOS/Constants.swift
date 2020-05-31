@@ -26,4 +26,8 @@ struct Constants {
     static let FRUIT_LEMON = 1
     static let FRUIT_WATERMELON = 2
     
+    // SQLite
+    static let DB_NAME = "datifyDB.sqlite"
+    static let TABLE_MESSAGES = "messages"
+    
 }
