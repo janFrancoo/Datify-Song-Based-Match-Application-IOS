@@ -212,8 +212,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 for doc in snapshot!.documents {
                     let chat = Chat(JSON: doc.data())!
                     if let chatOffset = self.chats.firstIndex(where: {$0.chatName == chat.chatName}) {
-                        self.chats[chatOffset] = chat
-                    } else {
+                        if chat.status == Constants.STATUS_CLOSED {
+                            self.chats.remove(at: chatOffset)
+                        } else {
+                            self.chats[chatOffset] = chat
+                        }
+                    } else if chat.status != Constants.STATUS_CLOSED {
                         self.chats.append(chat)
                     }
                     self.chatListTable.reloadData()
@@ -271,10 +275,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let currUserMailLen = user.eMail!.count
         let matchMailLen = chatNameLen - currUserMailLen - 1
         let matchMail: String!
-        
+                
         if lookFor == 2 {
             let start = chatName.index(chatName.startIndex, offsetBy: currUserMailLen + 1)
-            let end = chatName.index(chatName.endIndex, offsetBy: -matchMailLen)
+            let end = chatName.endIndex
             let range = start..<end
             
             matchMail = String(chatName[range])

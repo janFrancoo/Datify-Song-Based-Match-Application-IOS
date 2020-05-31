@@ -26,6 +26,10 @@
 		F3A9EDB32482AF1D001116DF /* ChatMessageLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */; };
 		F3A9EDB52482B9F8001116DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */; };
 		F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D5BFA624745B390060B3FC /* SettingsViewController.swift */; };
+		F3DC8C362484122400B7566D /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DC8C352484122300B7566D /* SpotifyiOS.framework */; };
+		F3DC8C382484176900B7566D /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC8C372484176900B7566D /* MatchViewController.swift */; };
+		F3DC8C3B248421E900B7566D /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC8C3A248421E900B7566D /* Track.swift */; };
+		F3DC8C3D248426B500B7566D /* TrackListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC8C3C248426B500B7566D /* TrackListTableViewCell.swift */; };
 		F3E11FEA247DA03300A83FE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E11FE9247DA03300A83FE7 /* Constants.swift */; };
 		F3EAD595247D4B940061ED77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAD594247D4B940061ED77 /* TabBarController.swift */; };
 		F3F5C5052472ED4800F8752B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5C5042472ED4800F8752B /* RegisterViewController.swift */; };
@@ -61,6 +65,11 @@
 		F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageLeftTableViewCell.swift; sourceTree = "<group>"; };
 		F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F3D5BFA624745B390060B3FC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F3DC8C352484122300B7566D /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		F3DC8C372484176900B7566D /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		F3DC8C392484190000B7566D /* spotify-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "spotify-bridging-header.h"; sourceTree = "<group>"; };
+		F3DC8C3A248421E900B7566D /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		F3DC8C3C248426B500B7566D /* TrackListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewCell.swift; sourceTree = "<group>"; };
 		F3E11FE9247DA03300A83FE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F3EAD594247D4B940061ED77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F3F5C5042472ED4800F8752B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A8300EAF03624C02038F7A /* Pods_DatifySongBasedMatchApplicationIOS.framework in Frameworks */,
+				F3DC8C362484122400B7566D /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +97,7 @@
 		56EE80AD9242EB54B278ED88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3DC8C352484122300B7566D /* SpotifyiOS.framework */,
 				DEC352F9CB444A3FE4BE1BE2 /* Pods_DatifySongBasedMatchApplicationIOS.framework */,
 			);
 			name = Frameworks;
@@ -150,6 +161,10 @@
 				F3A9EDB02482AEFA001116DF /* ChatMessageRightTableViewCell.swift */,
 				F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */,
 				F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */,
+				F3DC8C372484176900B7566D /* MatchViewController.swift */,
+				F3DC8C392484190000B7566D /* spotify-bridging-header.h */,
+				F3DC8C3A248421E900B7566D /* Track.swift */,
+				F3DC8C3C248426B500B7566D /* TrackListTableViewCell.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -270,6 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DC8C382484176900B7566D /* MatchViewController.swift in Sources */,
+				F3DC8C3B248421E900B7566D /* Track.swift in Sources */,
 				F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */,
 				F3450A2B2478A1A60095F532 /* Issue.swift in Sources */,
 				F3FF838C247AC8D9004DCB55 /* Chat.swift in Sources */,
@@ -279,6 +296,7 @@
 				F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */,
 				F3FF838A247ABCFA004DCB55 /* ChatListTableViewCell.swift in Sources */,
 				F303D20424795E96007FD949 /* BlockedUsersViewController.swift in Sources */,
+				F3DC8C3D248426B500B7566D /* TrackListTableViewCell.swift in Sources */,
 				F3F5C5092472F56800F8752B /* Block.swift in Sources */,
 				F3FF838E247AC9F3004DCB55 /* ChatMessage.swift in Sources */,
 				F3EAD595247D4B940061ED77 /* TabBarController.swift in Sources */,
@@ -374,7 +392,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/janfranco/Desktop/Datify/DatifySongBasedMatchApplicationIOS/DatifySongBasedMatchApplicationIOS/spotify-bridging-header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 			};
 			name = Debug;
 		};
@@ -427,7 +447,9 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/janfranco/Desktop/Datify/DatifySongBasedMatchApplicationIOS/DatifySongBasedMatchApplicationIOS/spotify-bridging-header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -439,6 +461,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8W74NV283R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DatifySongBasedMatchApplicationIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,6 +472,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.janfranco.DatifySongBasedMatchApplicationIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/janfranco/Desktop/Datify/DatifySongBasedMatchApplicationIOS/DatifySongBasedMatchApplicationIOS/spotify-bridging-header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,6 +486,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8W74NV283R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DatifySongBasedMatchApplicationIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,6 +497,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.janfranco.DatifySongBasedMatchApplicationIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/janfranco/Desktop/Datify/DatifySongBasedMatchApplicationIOS/DatifySongBasedMatchApplicationIOS/spotify-bridging-header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
