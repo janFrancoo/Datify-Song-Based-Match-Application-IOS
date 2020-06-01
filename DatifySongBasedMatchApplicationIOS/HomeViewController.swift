@@ -284,7 +284,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             matchMail = String(chatName[range])
         } else {
             let start = chatName.startIndex
-            let end = chatName.index(chatName.startIndex, offsetBy: matchMailLen - 1)
+            let end = chatName.index(chatName.startIndex, offsetBy: matchMailLen)
             let range = start..<end
 
             matchMail = String(chatName[range])

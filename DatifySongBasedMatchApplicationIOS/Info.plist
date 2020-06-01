@@ -2,17 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.janfranco.datifysongbasedmatchapplication://callback</string>
-			</array>
-			<key>CFBundleURLName</key>
-			<string>com.janfranco.datify</string>
-		</dict>
-	</array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>spotify</string>
+    </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -27,6 +20,17 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.janfranco.datify</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.janfranco.datifysongbasedmatchapplication://callback</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>

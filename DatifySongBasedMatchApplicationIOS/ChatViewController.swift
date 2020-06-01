@@ -54,6 +54,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         getFromLocalDb()
         listenCloud()
         updateHeader()
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

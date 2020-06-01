@@ -58,6 +58,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         avatarImageView.isUserInteractionEnabled = true
         let gestRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosePic))
         avatarImageView.addGestureRecognizer(gestRecognizer)
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func choosePic() {

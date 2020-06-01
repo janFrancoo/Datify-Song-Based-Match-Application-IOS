@@ -30,4 +30,8 @@ struct Constants {
     static let DB_NAME = "datifyDB.sqlite"
     static let TABLE_MESSAGES = "messages"
     
+    // Spotify
+    static let CLIENT_ID = "fb4680b5b1384bcaaf3febd991797ecc"
+    static let REDIRECT_URI = "com.janfranco.DatifySongBasedMatchApplication://callback"
+    
 }

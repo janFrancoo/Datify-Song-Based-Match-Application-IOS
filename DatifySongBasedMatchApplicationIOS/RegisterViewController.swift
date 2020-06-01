@@ -31,6 +31,8 @@ class RegisterViewController: UIViewController {
         inputUsername.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: .editingChanged)
         inputPass.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: .editingChanged)
         registerBtn.addTarget(self, action: #selector(RegisterViewController.register(_:)), for: .touchUpInside)
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

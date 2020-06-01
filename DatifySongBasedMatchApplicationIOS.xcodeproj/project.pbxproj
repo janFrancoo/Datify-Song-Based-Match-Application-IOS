@@ -17,6 +17,7 @@
 		F31DACA92471A6BB0082BE4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31DACA82471A6BB0082BE4D /* Assets.xcassets */; };
 		F31DACAC2471A6BB0082BE4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31DACAA2471A6BB0082BE4D /* LaunchScreen.storyboard */; };
 		F31DACB42471B6C40082BE4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */; };
+		F32C304524859D3B00D510C5 /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32C304424859D3B00D510C5 /* ConnectButton.swift */; };
 		F33558D4247984B300819DE2 /* PopUpIssueSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */; };
 		F340F4402479D49700F78E84 /* BlockedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340F43F2479D49700F78E84 /* BlockedUserTableViewCell.swift */; };
 		F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2824788AB20095F532 /* CurrentUser.swift */; };
@@ -56,6 +57,7 @@
 		F31DACAB2471A6BB0082BE4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31DACAD2471A6BB0082BE4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F31DACB32471B6C30082BE4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F32C304424859D3B00D510C5 /* ConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
 		F33558D3247984B300819DE2 /* PopUpIssueSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpIssueSendViewController.swift; sourceTree = "<group>"; };
 		F340F43F2479D49700F78E84 /* BlockedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserTableViewCell.swift; sourceTree = "<group>"; };
 		F3450A2824788AB20095F532 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				F3DC8C392484190000B7566D /* spotify-bridging-header.h */,
 				F3DC8C3A248421E900B7566D /* Track.swift */,
 				F3DC8C3C248426B500B7566D /* TrackListTableViewCell.swift */,
+				F32C304424859D3B00D510C5 /* ConnectButton.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */,
 				F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */,
 				F3FF8388247ABBDC004DCB55 /* ChatViewController.swift in Sources */,
+				F32C304524859D3B00D510C5 /* ConnectButton.swift in Sources */,
 				F3A9EDB32482AF1D001116DF /* ChatMessageLeftTableViewCell.swift in Sources */,
 				F340F4402479D49700F78E84 /* BlockedUserTableViewCell.swift in Sources */,
 			);
@@ -460,7 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W74NV283R;
+				DEVELOPMENT_TEAM = A5KVW4MPLN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -470,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.janfranco.DatifySongBasedMatchApplicationIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.janfranco.DatifySongBasedMatchApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/janfranco/Desktop/Datify/DatifySongBasedMatchApplicationIOS/DatifySongBasedMatchApplicationIOS/spotify-bridging-header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
@@ -485,7 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8W74NV283R;
+				DEVELOPMENT_TEAM = A5KVW4MPLN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -495,7 +499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.janfranco.DatifySongBasedMatchApplicationIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.janfranco.DatifySongBasedMatchApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/janfranco/Desktop/Datify/DatifySongBasedMatchApplicationIOS/DatifySongBasedMatchApplicationIOS/spotify-bridging-header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;

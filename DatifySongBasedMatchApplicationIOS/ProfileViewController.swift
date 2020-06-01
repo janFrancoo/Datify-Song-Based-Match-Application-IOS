@@ -48,8 +48,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let err = error {
                 self.makeAlert(title: "Error!", message: err.localizedDescription)
             } else if let doc = document, doc.exists {
-                self.profileUser = User(JSON: doc.data()!)!
-                self.currTrackLabel.text = self.profileUser.currTrack
+                let user = User(JSON: doc.data()!)!
+                self.profileUser = user
+                self.currTrackLabel.text = user.currTrack
             }
         }
     }

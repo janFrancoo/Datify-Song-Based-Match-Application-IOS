@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         loginBtn.addTarget(self, action: #selector(ViewController.login(_:)), for: .touchUpInside)
         resetPassBtn.addTarget(self, action: #selector(ViewController.resetPass(_:)), for: .touchUpInside)
         toggleSecureBtn.addTarget(self, action: #selector(ViewController.toggleSecure(_:)), for: .touchUpInside)
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,4 +133,15 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:    #selector(UIViewController.dismissKeyboard))
+      tap.cancelsTouchesInView = false
+      view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+       view.endEditing(true)
+    }
 }
