@@ -9,7 +9,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
-    
+
     static private let kAccessTokenKey = "access-token-key"
     private let redirectUri = URL(string: Constants.REDIRECT_URI)!
     private let clientIdentifier = Constants.CLIENT_ID
@@ -61,14 +61,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
        }
     }
     
+    var currTrack: SPTAppRemoteTrack?
+    
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        playerViewController.playerStateChanged(playerState)
+        if currTrack != nil && currTrack!.name != playerState.track.name {
+            NotificationCenter.default.post(
+                name: NSNotification.Name(rawValue: "trackChanged"),
+                object: nil,
+                userInfo: ["currTrack": playerState.track])
+        }
+        
+        currTrack = playerState.track
     }
-
+    
     // MARK: AppRemoteDelegate
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
         self.appRemote = appRemote
-        playerViewController.appRemoteConnected()
         
         self.appRemote.playerAPI?.delegate = self
         self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
@@ -79,15 +87,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
     }
 
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        print("didFailConnectionAttemptWithError")
-        playerViewController.appRemoteDisconnect()
+        playerViewController.sptConnError()
     }
 
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        print("didDisconnectWithError")
-        playerViewController.appRemoteDisconnect()
+        playerViewController.sptConnError()
     }
 
-    lazy var playerViewController = MatchViewController()
-
+    var playerViewController = MatchViewController()
+    
 }
