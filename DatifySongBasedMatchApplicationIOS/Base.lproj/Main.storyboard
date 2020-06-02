@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MJI-lz-qlX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MJI-lz-qlX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -234,10 +234,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedUser" id="Jhy-Rd-K5c" customClass="BlockedUserTableViewCell" customModule="DatifySongBasedMatchApplicationIOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jhy-Rd-K5c" id="ng5-p7-WaK">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5D-8v-vR4">
@@ -770,14 +770,26 @@
                     <view key="view" contentMode="scaleToFill" id="j3Y-Bk-Wa8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bO4-Xo-Ugj">
+                                <rect key="frame" x="72" y="141" width="254" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="KCc-Po-hKK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Match" image="music.note" catalog="system" id="j7q-i0-o9p"/>
+                    <connections>
+                        <outlet property="sptInfo" destination="bO4-Xo-Ugj" id="vqL-rf-HbF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBK-Al-N27" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="169"/>
+            <point key="canvasLocation" x="1773.913043478261" y="168.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="er3-54-Cvs">
@@ -798,15 +810,15 @@
             <point key="canvasLocation" x="-710.14492753623199" y="168.75"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="bubble.left.fill" catalog="system" width="64" height="54"/>
-        <image name="eye.slash.fill" catalog="system" width="64" height="40"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
-        <image name="music.note" catalog="system" width="48" height="64"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jyO-TY-Zvz"/>
         <segue reference="ehh-Ls-sDa"/>
         <segue reference="O2k-jS-54R"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="bubble.left.fill" catalog="system" width="128" height="110"/>
+        <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="music.note" catalog="system" width="97" height="128"/>
+    </resources>
 </document>
