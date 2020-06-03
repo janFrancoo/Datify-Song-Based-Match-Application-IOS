@@ -17,10 +17,13 @@ class PopUpIssueSendViewController: UIViewController {
     @IBOutlet weak var inputIssue: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var alertView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        alertView.layer.cornerRadius = 16
+        alertView.clipsToBounds = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         sendBtn.isEnabled = false
@@ -61,7 +64,27 @@ class PopUpIssueSendViewController: UIViewController {
     }
     
     @objc func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        removeAnimate()
+    }
+    
+    func showAnimate() {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+    }
+    
+    func removeAnimate() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 0.0
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }, completion: { (finished: Bool) in
+            if finished {
+                self.view.removeFromSuperview()
+            }
+        })
     }
     
     func makeAlert(title: String, message: String) {

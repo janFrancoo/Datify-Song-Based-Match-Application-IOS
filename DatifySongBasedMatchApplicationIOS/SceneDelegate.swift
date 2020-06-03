@@ -87,13 +87,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
     }
 
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        playerViewController.sptConnError()
+        print("err")
     }
 
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        playerViewController.sptConnError()
+        print("err")
     }
-
-    var playerViewController = MatchViewController()
     
 }

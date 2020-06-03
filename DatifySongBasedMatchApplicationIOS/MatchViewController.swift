@@ -20,6 +20,7 @@ class MatchViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var tracks: [Track]!
     var db: Firestore!
     var user: User!
+    var gCurrTrack: Track?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,19 +71,52 @@ class MatchViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 "userMail": user.eMail!,
                 "trackName": currTrack.name,
                 "artistName": currTrack.artist.name,
-                "uri": uri,
+                "uri": currTrack.uri,
                 "addDate": createDate
             ])!
             
+            self.gCurrTrack = track
             tracks.append(track)
             trackHistoryTable.reloadData()
             db.collection("track").document(user.eMail!).collection("list")
                 .document(track.artistName! + "_" + track.trackName!).setData(track.toJSON())
+            db.collection("userDetail").document(user.eMail!).updateData([
+                "currTrack": track.artistName! + "___" + track.trackName!,
+                "currTrackUri": track.uri!
+            ])
         }
     }
     
     @objc func matchBySong(_ sender: AnyObject?) {
-        
+        if let currTrack = gCurrTrack {
+            var users = [User]()
+            db.collection("userDetail")
+                .whereField("currTrack", isEqualTo: currTrack.artistName! + "___" + currTrack.trackName!)
+                .getDocuments { (querySnapshot, err) in
+                    if let err = err {
+                        self.makeAlert(title: "Error!", message: err.localizedDescription)
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let user = User(JSON: document.data())!
+                            users.append(user)
+                        }
+                        if !users.isEmpty {
+                            self.selectUser(currTrack, users)
+                        }
+                    }
+            }
+        }
+    }
+    
+    func selectUser(_ track: Track, _ users: [User]) {
+        // add a label for info that shows what track caused match
+        let popUp = self.storyboard!.instantiateViewController(withIdentifier: "popUpSelectUser")
+            as! PopUpSelectUserViewController
+        popUp.users = users
+        self.addChild(popUp)
+        popUp.view.frame = self.view.frame
+        self.view.addSubview(popUp.view)
+        popUp.didMove(toParent: self)
     }
     
     func sptConnError() {

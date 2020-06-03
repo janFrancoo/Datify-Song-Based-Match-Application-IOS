@@ -97,8 +97,8 @@ class ViewController: UIViewController {
     }
     
     @objc func resetPass(_ sender: AnyObject?) {
-        let popUp = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "popUpResetPass") as! PopUpResetPassVC
+        let popUp = self.storyboard!.instantiateViewController(withIdentifier: "popUpResetPass")
+            as! PopUpResetPassVC
         self.addChild(popUp)
         popUp.view.frame = self.view.frame
         self.view.addSubview(popUp.view)

@@ -40,6 +40,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         db = Firestore.firestore()
         messages = [ChatMessage]()
         
+        userAvatar.contentMode = UIView.ContentMode.scaleAspectFill
+        userAvatar.layer.borderWidth = 1
+        userAvatar.layer.masksToBounds = false
+        userAvatar.layer.borderColor = UIColor.black.cgColor
+        userAvatar.layer.cornerRadius = userAvatar.frame.height / 2
+        userAvatar.clipsToBounds = true
+        
         sendMessageBtn.addTarget(self, action: #selector(ChatViewController.sendMessage(_:)), for: .touchUpInside)
         sendFruitBtn.addTarget(self, action: #selector(ChatViewController.sendFruit(_:)), for: .touchUpInside)
         usernameBtn.addTarget(self, action: #selector(ChatViewController.goToUserProfile(_:)), for: .touchUpInside)

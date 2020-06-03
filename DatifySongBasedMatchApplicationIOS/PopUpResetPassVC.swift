@@ -13,17 +13,22 @@ class PopUpResetPassVC: UIViewController {
     
     @IBOutlet weak var inputMail: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var alertView: UIView!
     
     let EMAIL_REGEX = "^(.+)@([a-zA-Z\\d-]+)\\.([a-zA-Z]+)(\\.[a-zA-Z]+)?$"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        alertView.layer.cornerRadius = 16
+        alertView.clipsToBounds = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         sendBtn.isEnabled = false
         inputMail.addTarget(self, action: #selector(PopUpResetPassVC.textFieldDidChange(_:)), for: .editingChanged)
         sendBtn.addTarget(self, action: #selector(PopUpResetPassVC.sendPassResetMail(_:)), for: .touchUpInside)
+        cancelBtn.addTarget(self, action: #selector(PopUpResetPassVC.removeAnimate(_:)), for: .touchUpInside)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -51,8 +56,24 @@ class PopUpResetPassVC: UIViewController {
         }
     }
     
-    @IBAction func cancelBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func showAnimate() {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+    }
+    
+    @objc func removeAnimate(_ sender: AnyObject?) {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 0.0
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }, completion: { (finished: Bool) in
+            if finished {
+                self.view.removeFromSuperview()
+            }
+        })
     }
     
     func makeAlert(title: String, message: String) {

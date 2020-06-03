@@ -22,6 +22,8 @@
 		F3450A2924788AB20095F532 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2824788AB20095F532 /* CurrentUser.swift */; };
 		F3450A2B2478A1A60095F532 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3450A2A2478A1A60095F532 /* Issue.swift */; };
 		F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37139E62471EFDF00CBF26B /* HomeViewController.swift */; };
+		F39FDEF02488515900C42463 /* PopUpSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39FDEEF2488515800C42463 /* PopUpSelectUserViewController.swift */; };
+		F39FDEF22488564200C42463 /* UserSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39FDEF12488564200C42463 /* UserSelectCollectionViewCell.swift */; };
 		F3A9EDB12482AEFA001116DF /* ChatMessageRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB02482AEFA001116DF /* ChatMessageRightTableViewCell.swift */; };
 		F3A9EDB32482AF1D001116DF /* ChatMessageLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */; };
 		F3A9EDB52482B9F8001116DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */; };
@@ -61,6 +63,8 @@
 		F3450A2824788AB20095F532 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		F3450A2A2478A1A60095F532 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		F37139E62471EFDF00CBF26B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F39FDEEF2488515800C42463 /* PopUpSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpSelectUserViewController.swift; sourceTree = "<group>"; };
+		F39FDEF12488564200C42463 /* UserSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3A9EDB02482AEFA001116DF /* ChatMessageRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRightTableViewCell.swift; sourceTree = "<group>"; };
 		F3A9EDB22482AF1D001116DF /* ChatMessageLeftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageLeftTableViewCell.swift; sourceTree = "<group>"; };
 		F3A9EDB42482B9F8001116DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				F3DC8C392484190000B7566D /* spotify-bridging-header.h */,
 				F3DC8C3A248421E900B7566D /* Track.swift */,
 				F3DC8C3C248426B500B7566D /* TrackListTableViewCell.swift */,
+				F39FDEEF2488515800C42463 /* PopUpSelectUserViewController.swift */,
+				F39FDEF12488564200C42463 /* UserSelectCollectionViewCell.swift */,
 			);
 			path = DatifySongBasedMatchApplicationIOS;
 			sourceTree = "<group>";
@@ -305,12 +311,14 @@
 				F31DACA02471A6B20082BE4D /* AppDelegate.swift in Sources */,
 				F3A9EDB52482B9F8001116DF /* ProfileViewController.swift in Sources */,
 				F31DACA22471A6B20082BE4D /* SceneDelegate.swift in Sources */,
+				F39FDEF02488515900C42463 /* PopUpSelectUserViewController.swift in Sources */,
 				F3E11FEA247DA03300A83FE7 /* Constants.swift in Sources */,
 				F37139E72471EFDF00CBF26B /* HomeViewController.swift in Sources */,
 				F3D5BFA724745B390060B3FC /* SettingsViewController.swift in Sources */,
 				F3FF8388247ABBDC004DCB55 /* ChatViewController.swift in Sources */,
 				F3A9EDB32482AF1D001116DF /* ChatMessageLeftTableViewCell.swift in Sources */,
 				F340F4402479D49700F78E84 /* BlockedUserTableViewCell.swift in Sources */,
+				F39FDEF22488564200C42463 /* UserSelectCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

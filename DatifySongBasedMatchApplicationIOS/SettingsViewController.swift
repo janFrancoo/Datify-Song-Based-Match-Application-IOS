@@ -51,6 +51,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             avatarImageView.kf.setImage(with: url)
         }
         
+        avatarImageView.contentMode = UIView.ContentMode.scaleAspectFill
+        avatarImageView.layer.borderWidth = 1
+        avatarImageView.layer.masksToBounds = false
+        avatarImageView.layer.borderColor = UIColor.black.cgColor
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        avatarImageView.clipsToBounds = true
+            
         updateBtn.addTarget(self, action: #selector(SettingsViewController.update(_:)), for: .touchUpInside)
         blockedUsersBtn.addTarget(self, action: #selector(SettingsViewController.goToBlockedUsers(_:)), for: .touchUpInside)
         issueBtn.addTarget(self, action: #selector(SettingsViewController.showIssuePopUp(_:)), for: .touchUpInside)
@@ -114,12 +121,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @objc func showIssuePopUp(_ sender: AnyObject?) {
-        let popUp = UIStoryboard(name: "Main", bundle: nil)
-           .instantiateViewController(withIdentifier: "popUpSendIssue") as! PopUpIssueSendViewController
-       self.addChild(popUp)
-       popUp.view.frame = self.view.frame
-       self.view.addSubview(popUp.view)
-       popUp.didMove(toParent: self)
+        let popUp = self.storyboard!.instantiateViewController(withIdentifier: "popUpSendIssue")
+            as! PopUpIssueSendViewController
+        self.addChild(popUp)
+        popUp.view.frame = self.view.frame
+        self.view.addSubview(popUp.view)
+        popUp.didMove(toParent: self)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
