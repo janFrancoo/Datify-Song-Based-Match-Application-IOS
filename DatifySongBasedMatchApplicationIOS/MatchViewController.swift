@@ -99,20 +99,21 @@ class MatchViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         for document in querySnapshot!.documents {
                             let user = User(JSON: document.data())!
                             users.append(user)
+                            // consider the blocked users!
                         }
                         if !users.isEmpty {
-                            self.selectUser(currTrack, users)
+                            self.selectUser(currTrack.trackName! + " - " + currTrack.artistName!, users)
                         }
                     }
             }
         }
     }
     
-    func selectUser(_ track: Track, _ users: [User]) {
-        // add a label for info that shows what track caused match
+    func selectUser(_ track: String, _ users: [User]) {
         let popUp = self.storyboard!.instantiateViewController(withIdentifier: "popUpSelectUser")
             as! PopUpSelectUserViewController
         popUp.users = users
+        popUp.matchTrack = track
         self.addChild(popUp)
         popUp.view.frame = self.view.frame
         self.view.addSubview(popUp.view)

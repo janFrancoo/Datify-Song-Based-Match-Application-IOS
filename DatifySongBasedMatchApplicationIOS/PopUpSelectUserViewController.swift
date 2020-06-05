@@ -12,9 +12,11 @@ import Kingfisher
 class PopUpSelectUserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var users: [User]?
+    var matchTrack: String!
     
     @IBOutlet weak var usersCollectionView: UICollectionView!
     @IBOutlet weak var alertView: UIView!
+    @IBOutlet weak var matchTrackLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,8 @@ class PopUpSelectUserViewController: UIViewController, UICollectionViewDelegate,
         alertView.layer.cornerRadius = 16
         alertView.clipsToBounds = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
+        matchTrackLabel.text = "Matched on: \(matchTrack ?? "")"
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.removeAnimate(_:)))
         self.view.addGestureRecognizer(tap)
@@ -49,7 +53,11 @@ class PopUpSelectUserViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // create chat
+        let user = users![indexPath.row]
+        let homeVC = HomeViewController()
+        let chatName = homeVC.generateChatName(user.eMail!)
+        homeVC.createChat(chatName, user)
+        self.present(homeVC, animated: true)
     }
     
     func showAnimate() {
