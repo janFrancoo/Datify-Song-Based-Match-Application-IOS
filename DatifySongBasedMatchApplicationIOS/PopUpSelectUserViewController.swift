@@ -17,6 +17,7 @@ class PopUpSelectUserViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var usersCollectionView: UICollectionView!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var matchTrackLabel: UILabel!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,9 @@ class PopUpSelectUserViewController: UIViewController, UICollectionViewDelegate,
         
         matchTrackLabel.text = "Matched on: \(matchTrack ?? "")"
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.removeAnimate(_:)))
-        self.view.addGestureRecognizer(tap)
+        // let tap = UITapGestureRecognizer(target: self, action: #selector(self.removeAnimate(_:)))
+        // self.view.addGestureRecognizer(tap)
+        cancelBtn.addTarget(self, action: #selector(self.removeAnimate(_:)), for: .touchUpInside)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,10 +56,12 @@ class PopUpSelectUserViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let user = users![indexPath.row]
-        let homeVC = HomeViewController()
-        let chatName = homeVC.generateChatName(user.eMail!)
-        homeVC.createChat(chatName, user)
-        self.present(homeVC, animated: true)
+        if let homeVC = self.storyboard!.instantiateViewController(withIdentifier: "homeVC") as? HomeViewController {
+            let chatName = homeVC.generateChatName(user.eMail!)
+            homeVC.createChat(chatName, user)
+            present(homeVC, animated: true, completion: nil)
+            self.removeAnimate(nil)
+        }
     }
     
     func showAnimate() {

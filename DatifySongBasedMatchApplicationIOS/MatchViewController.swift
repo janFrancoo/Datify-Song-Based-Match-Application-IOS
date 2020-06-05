@@ -54,6 +54,7 @@ class MatchViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func trackChanged(_ notification: Notification) {
+        // prevent saving same tracks
         if let currTrack = notification.userInfo?["currTrack"] as? SPTAppRemoteTrack {
             let createDate = Timestamp.init().seconds
 
@@ -65,7 +66,6 @@ class MatchViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let imageId = currTrack.imageIdentifier.components(separatedBy: ":")
             let uri = "https://i.scdn.co/image/" + imageId[2]
             trackCover.kf.setImage(with: URL(string: uri))
-            
             
             let track = Track(JSON: [
                 "userMail": user.eMail!,
@@ -91,15 +91,19 @@ class MatchViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let currTrack = gCurrTrack {
             var users = [User]()
             db.collection("userDetail")
-                .whereField("currTrack", isEqualTo: currTrack.artistName! + "___" + currTrack.trackName!)
+                .whereField(
+                    "currTrack",
+                    isEqualTo: currTrack.artistName! + "___" + currTrack.trackName!)
                 .getDocuments { (querySnapshot, err) in
                     if let err = err {
                         self.makeAlert(title: "Error!", message: err.localizedDescription)
                     } else {
                         for document in querySnapshot!.documents {
-                            let user = User(JSON: document.data())!
-                            users.append(user)
-                            // consider the blocked users!
+                            let matchUser = User(JSON: document.data())!
+                            if matchUser.eMail != self.user.eMail {
+                                users.append(matchUser)
+                            }
+                            // consider the blocked users & already matched users
                         }
                         if !users.isEmpty {
                             self.selectUser(currTrack.trackName! + " - " + currTrack.artistName!, users)

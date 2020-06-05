@@ -60,6 +60,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         menuButton.addMenuItems([item1, item2])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if chatListTable != nil {
+            chatListTable.reloadData()
+        }
+    }
+    
     func randomMatch() {
         if randTryLim <= 0 {
             makeAlert(title: "Limit Exceed", message: "Random trying limit exceeded")
@@ -167,7 +173,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 self.updateMatchFields(randUser.eMail!)
                 self.chats.append(chat)
-                self.chatListTable.reloadData()
+                if self.chatListTable != nil {
+                    self.chatListTable.reloadData()
+                }
             }
         }
     }
